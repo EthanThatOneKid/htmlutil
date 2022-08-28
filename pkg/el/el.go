@@ -105,32 +105,6 @@ func WithClass(classes ...string) Tf {
 	}
 }
 
-// Returns an element transformer that casts the element to a variadic number of outer elements.
-// This changes the tag, attributes, and styles of the element, but none of its children.
-// TODO: Move this to a separate helper package for advanced usage.
-// func WithOuter(outers ...El) Tf {
-// 	return func(original El) (e El) {
-// 		// Copy first outer element to result, leaving children intact.
-// 		e = original
-
-// 		if len(outers) == 0 {
-// 			return
-// 		}
-
-// 		// Copy outer element's tag, attributes, styles, and classes to result; leaving children intact.
-// 		for _, outer := range outers {
-// 			e.tag = outer.tag
-// 			e.Apply(
-// 				WithAttr(outer.Attrs()...),
-// 				WithStyle(outer.Styles()...),
-// 				WithClass(outer.Classes()...),
-// 			)
-// 		}
-
-// 		return e
-// 	}
-// }
-
 // String returns the HTML representation of the element.
 func (e El) String() string {
 	var b strings.Builder
