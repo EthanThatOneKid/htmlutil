@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  cases_test:
+  htmlutil_check:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
