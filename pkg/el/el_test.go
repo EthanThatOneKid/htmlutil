@@ -14,6 +14,13 @@ func ExampleNew() {
 	// Output: <div></div>
 }
 
+func ExampleText() {
+	text := Text("abc")
+	fmt.Println(text)
+
+	// Output: abc
+}
+
 func ExampleWithAttr() {
 	id := attr.New("id", "my-id")
 	el := New("div", WithAttr(id))
@@ -42,4 +49,11 @@ func ExampleWithChild() {
 	fmt.Println(el)
 
 	// Output: <div><span></span></div>
+}
+
+func ExampleWithText() {
+	parent := New("p", WithText("abc"))
+	fmt.Println(parent)
+
+	// Output: <p>abc</p>
 }
