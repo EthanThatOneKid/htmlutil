@@ -7,6 +7,10 @@ import (
 	"github.com/ethanthatonekid/htmlutil/pkg/style"
 )
 
+const (
+	TAG_TEXT_CONTENT = "__TEXT_CONTENT"
+)
+
 // El is the base of all HTML elements.
 type El struct {
 	tag     string
@@ -14,7 +18,9 @@ type El struct {
 	styles  map[string]style.Style
 	classes map[string]struct{}
 
-	Children []El
+	// An El may either text content or child elements.
+	TextContent string
+	Children    []El
 }
 
 // Element transformer function type.
@@ -60,11 +66,28 @@ func (e *El) Apply(tfs ...Tf) El {
 	return *e
 }
 
-// Instantiate new element with tag name and empty attribute/style/class maps.
+// Instantiates new element with tag name and empty attribute/style/class maps.
 func New(tag string, tfs ...Tf) El {
+	emptyAttrs := make(map[string]attr.Attr)
+	emptyStyles := make(map[string]style.Style)
+	emptyClasses := make(map[string]struct{})
+
 	e := El{
-		tag: tag, attrs: make(map[string]attr.Attr), styles: make(map[string]style.Style), classes: make(map[string]struct{})}
+		tag:     tag,
+		attrs:   emptyAttrs,
+		styles:  emptyStyles,
+		classes: emptyClasses,
+	}
+
 	return e.Apply(tfs...)
+}
+
+// Instantiates new text node from text content.
+func Text(content string) El {
+	return New(TAG_TEXT_CONTENT, func(e El) El {
+		e.TextContent = content
+		return e
+	})
 }
 
 // Returns an element transformer that adds a variadic number of attributes to the element.
@@ -105,8 +128,19 @@ func WithClass(classes ...string) Tf {
 	}
 }
 
+// Appends a child text node.
+func WithText(content string) Tf {
+	return func(e El) El {
+		return e.Apply(WithChild(Text(content)))
+	}
+}
+
 // String returns the HTML representation of the element.
 func (e El) String() string {
+	if e.Tag() == TAG_TEXT_CONTENT {
+		return e.TextContent
+	}
+
 	var b strings.Builder
 
 	b.WriteString("<")
