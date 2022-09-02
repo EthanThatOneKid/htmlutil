@@ -22,31 +22,55 @@ func ExampleText() {
 }
 
 func ExampleWithAttr() {
-	id := attr.New("id", "my-id")
-	el := New("div", WithAttr(id))
-	fmt.Println(el)
+	a1 := attr.New("id", "my-id")
+	a2 := attr.New("href", "https://example.com/")
+	a3 := attr.New("abc", "xyz")
 
-	// Output: <div id="my-id"></div>
+	e := New("a", WithAttr(a1, a2), WithAttr(a3))
+
+	for _, a := range e.Attrs() {
+		fmt.Println(a)
+	}
+
+	// Unordered output:
+	// {id my-id}
+	// {href https://example.com/}
+	// {abc xyz}
 }
 
 func ExampleWithStyle() {
-	style := style.New("color", "red")
-	el := New("div", WithStyle(style))
-	fmt.Println(el)
+	s1 := style.New("color", "red")
+	s2 := style.New("border-radius", "50%")
+	s3 := style.New("border", "1px solid black")
 
-	// Output: <div style="color:red;"></div>
+	e := New("div", WithStyle(s1, s2), WithStyle(s3))
+
+	for _, s := range e.Styles() {
+		fmt.Println(s)
+	}
+
+	// Unordered output:
+	// color:red;
+	// border-radius:50%;
+	// border:1px solid black;
 }
 
 func ExampleWithClass() {
-	el := New("div", WithClass("a", "b", "c"))
-	fmt.Println(el)
+	e := New("div", WithClass("a", "b"), WithClass("c"))
 
-	// Output: <div class="a b c"></div>
+	for _, className := range e.Classes() {
+		fmt.Println(className)
+	}
+
+	// Unordered output:
+	// a
+	// b
+	// c
 }
 
 func ExampleWithChild() {
-	el := New("div", WithChild(New("span")))
-	fmt.Println(el)
+	e := New("div", WithChild(New("span")))
+	fmt.Println(e)
 
 	// Output: <div><span></span></div>
 }

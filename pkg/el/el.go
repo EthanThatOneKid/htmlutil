@@ -32,21 +32,19 @@ func (e El) Tag() string {
 }
 
 // Getter for attributes of the element.
-func (e El) Attrs() []attr.Attr {
-	attrs := make([]attr.Attr, len(e.attrs))
+func (e El) Attrs() (attrs []attr.Attr) {
 	for _, value := range e.attrs {
 		attrs = append(attrs, value)
 	}
-	return attrs
+	return
 }
 
 // Getter for styles of the element.
-func (e El) Styles() []style.Style {
-	styles := make([]style.Style, len(e.styles))
+func (e El) Styles() (styles []style.Style) {
 	for _, value := range e.styles {
 		styles = append(styles, value)
 	}
-	return styles
+	return
 }
 
 // Getter for readonly classes of the element.
@@ -54,7 +52,7 @@ func (e El) Classes() (classes []string) {
 	for className := range e.classes {
 		classes = append(classes, className)
 	}
-	return classes
+	return
 }
 
 // Apply element transformer(s) to the element.
