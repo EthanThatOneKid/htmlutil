@@ -1,6 +1,8 @@
 package attr
 
 // Attr is an HTML element attribute.
+//
+// See: https://pkg.go.dev/golang.org/x/net/html#Attribute
 type Attr struct {
 	name  string
 	value string

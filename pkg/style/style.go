@@ -1,6 +1,8 @@
 package style
 
 // Style is an HTML element style.
+//
+// See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
 type Style struct {
 	prop  string
 	value string
