@@ -11,6 +11,19 @@ I started experimenting with a custom way of composing HTML elements.
 This is considered reinventing the wheel, so I do not recommend usage of this software.
 To clarify, `htmlutil` is an experimental Go module aiming to facilitate my personal HTML/CSS/JS development.
 
+## Development
+
+### Install the required software
+
+```sh
+go get github.com/atombender/go-jsonschema/...
+go install github.com/atombender/go-jsonschema/cmd/gojsonschema@latest
+```
+
+```sh
+gojsonschema -p cssproperties ./pkg/data/properties.schema.json
+```
+
 ---
 
 Created with 💖 by [**@EthanThatOneKid**](https://etok.codes/)
