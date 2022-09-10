@@ -3,6 +3,7 @@ module github.com/ethanthatonekid/htmlutil
 go 1.17
 
 require (
+	github.com/a-h/generate v0.0.0-20220105161013-96c14dfdfb60 // indirect
 	github.com/atombender/go-jsonschema v0.9.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.0 // indirect

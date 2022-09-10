@@ -1,19 +1,98 @@
 {
-  "definitions": {
-    "propertyList": {
-      "type": "array",
-      "minItems": 1,
-      "uniqueItems": true,
-      "items": {
-        "type": "string",
-        "property-reference": {
-          "comment": "property-reference is an extension to the JSON schema validator. Here it jumps to the root level of the hierarchy and tests if a value is an existing key there (i.e a defined property). See test/validate-schema.js for implementation details.",
-          "$data": "/"
+  "$schema":"http://json-schema.org/draft-04/schema#",
+  "title":"Property",
+  "id":"http://example.com/exampleschema.json",
+  "definitions":{
+    "groupList":{
+      "enum":[
+        "Basic Selectors",
+        "Combinators",
+        "Compositing and Blending",
+        "CSS Angles",
+        "CSS Animations",
+        "CSS Backgrounds and Borders",
+        "CSS Basic User Interface",
+        "CSS Box Model",
+        "CSS Box Alignment",
+        "CSS Break",
+        "CSS Cascading and Inheritance",
+        "CSS Charsets",
+        "CSS Color",
+        "CSS Columns",
+        "CSS Conditional Rules",
+        "CSS Containment",
+        "CSS Counter Styles",
+        "CSS Device Adaptation",
+        "CSS Display",
+        "CSS Flexible Box Layout",
+        "CSS Flexible Lengths",
+        "CSS Fonts",
+        "CSS Fragmentation",
+        "CSS Frequencies",
+        "CSS Generated Content",
+        "CSS Grid Layout",
+        "CSS Houdini",
+        "CSS Images",
+        "CSS Inline",
+        "CSS Lengths",
+        "CSS Lists and Counters",
+        "CSS Logical Properties",
+        "CSS Masking",
+        "CSS Miscellaneous",
+        "CSS Motion Path",
+        "CSS Namespaces",
+        "CSS Overflow",
+        "CSS Pages",
+        "CSS Positioning",
+        "CSS Regions",
+        "CSS Resolutions",
+        "CSS Ruby",
+        "CSS Scroll Anchoring",
+        "CSS Scrollbars",
+        "CSS Scroll Snap",
+        "CSS Shadow Parts",
+        "CSS Shapes",
+        "CSS Speech",
+        "CSS Table",
+        "CSS Text",
+        "CSS Text Decoration",
+        "CSS Times",
+        "CSS Transforms",
+        "CSS Transitions",
+        "CSS Types",
+        "CSS Units",
+        "CSS Variables",
+        "CSS Will Change",
+        "CSS Writing Modes",
+        "CSSOM View",
+        "Filter Effects",
+        "Grouping Selectors",
+        "MathML",
+        "Media Queries",
+        "Microsoft Extensions",
+        "Mozilla Extensions",
+        "Pointer Events",
+        "Pseudo",
+        "Pseudo-classes",
+        "Pseudo-elements",
+        "Selectors",
+        "WebKit Extensions"
+      ]
+    },
+    "propertyList":{
+      "type":"array",
+      "minItems":1,
+      "uniqueItems":true,
+      "items":{
+        "type":"string",
+        "property-reference":{
+          "comment":"property-reference is an extension to the JSON schema validator. Here it jumps to the root level of the hierarchy and tests if a value is an existing key there (i.e a defined property). See test/validate-schema.js for implementation details.",
+          "$data":"/"
         }
       }
     },
-    "animationType": {
-      "enum": [
+    "animationType":{
+      "enum":[
         "angleBasicShapeOrPath",
         "angleOrBasicShapeOrPath",
         "basicShapeOtherwiseNo",
@@ -40,8 +119,8 @@
         "visibility"
       ]
     },
-    "percentages": {
-      "enum": [
+    "percentages":{
+      "enum":[
         "blockSizeOfContainingBlock",
         "dependsOnLayoutModel",
         "inlineSizeOfContainingBlock",
@@ -88,8 +167,8 @@
         "relativeToWidthAndHeight"
       ]
     },
-    "computed": {
-      "enum": [
+    "computed":{
+      "enum":[
         "absoluteLength",
         "absoluteLength0ForNone",
         "absoluteLength0IfColumnRuleStyleNoneOrHidden",
@@ -159,8 +238,8 @@
         "twoAbsoluteLengths"
       ]
     },
-    "appliesto": {
-      "enum": [
+    "appliesto":{
+      "enum":[
         "absolutelyPositionedElements",
         "allElements",
         "allElementsAcceptingWidthOrHeight",
@@ -248,20 +327,20 @@
         "xulImageElements"
       ]
     },
-    "alsoApplyTo": {
-      "type": "array",
-      "minItems": 1,
-      "uniqueItems": true,
-      "items": {
-        "enum": [
+    "alsoApplyTo":{
+      "type":"array",
+      "minItems":1,
+      "uniqueItems":true,
+      "items":{
+        "enum":[
           "::first-letter",
           "::first-line",
           "::placeholder"
         ]
       }
     },
-    "order": {
-      "enum": [
+    "order":{
+      "enum":[
         "canonicalOrder",
         "lengthOrPercentageBeforeKeywordIfBothPresent",
         "lengthOrPercentageBeforeKeywords",
@@ -272,24 +351,24 @@
         "uniqueOrder"
       ]
     },
-    "status": {
-      "enum": [
+    "status":{
+      "enum":[
         "standard",
         "nonstandard",
         "experimental",
         "obsolete"
       ]
     },
-    "mdn_url": {
-      "type": "string",
-      "pattern": "^https://developer.mozilla.org/docs/"
+    "mdn_url":{
+      "type":"string",
+      "pattern":"^https://developer.mozilla.org/docs/"
     }
   },
-  "type": "object",
-  "additionalProperties": {
-    "type": "object",
-    "additionalProperties": false,
-    "required": [
+  "type":"object",
+  "additionalProperties":{
+    "type":"object",
+    "additionalProperties":false,
+    "required":[
       "syntax",
       "media",
       "inherited",
@@ -302,15 +381,15 @@
       "order",
       "status"
     ],
-    "properties": {
-      "syntax": {
-        "type": "string"
+    "properties":{
+      "syntax":{
+        "type":"string"
       },
-      "media": {
-        "oneOf": [
+      "media":{
+        "oneOf":[
           {
-            "type": "string",
-            "enum": [
+            "type":"string",
+            "enum":[
               "all",
               "aural",
               "continuous",
@@ -323,12 +402,12 @@
             ]
           },
           {
-            "type": "array",
-            "minItems": 2,
-            "uniqueItems": true,
-            "items": {
-              "type": "string",
-              "enum": [
+            "type":"array",
+            "minItems":2,
+            "uniqueItems":true,
+            "items":{
+              "type":"string",
+              "enum":[
                 "interactive",
                 "paged",
                 "visual"
@@ -337,74 +416,74 @@
           }
         ]
       },
-      "inherited": {
-        "type": "boolean"
+      "inherited":{
+        "type":"boolean"
       },
-      "animationType": {
-        "oneOf": [
+      "animationType":{
+        "oneOf":[
           {
-            "$ref": "#/definitions/animationType"
+            "$ref":"#/definitions/animationType"
           },
           {
-            "$ref": "#/definitions/propertyList"
+            "$ref":"#/definitions/propertyList"
           }
         ]
       },
-      "percentages": {
-        "oneOf": [
+      "percentages":{
+        "oneOf":[
           {
-            "$ref": "#/definitions/percentages"
+            "$ref":"#/definitions/percentages"
           },
           {
-            "$ref": "#/definitions/propertyList"
+            "$ref":"#/definitions/propertyList"
           }
         ]
       },
-      "groups": {
-        "type": "array",
-        "minitems": 1,
-        "uniqueItems": true,
-        "items": {
-          "$ref": "definitions.json#/groupList"
+      "groups":{
+        "type":"array",
+        "minitems":1,
+        "uniqueItems":true,
+        "items":{
+          "$ref":"#/definitions/groupList"
         }
       },
-      "initial": {
-        "oneOf": [
+      "initial":{
+        "oneOf":[
           {
-            "type": "string"
+            "type":"string"
           },
           {
-            "$ref": "#/definitions/propertyList"
+            "$ref":"#/definitions/propertyList"
           }
         ]
       },
-      "appliesto": {
-        "$ref": "#/definitions/appliesto"
+      "appliesto":{
+        "$ref":"#/definitions/appliesto"
       },
-      "alsoAppliesTo": {
-        "$ref": "#/definitions/alsoApplyTo"
+      "alsoAppliesTo":{
+        "$ref":"#/definitions/alsoApplyTo"
       },
-      "computed": {
-        "oneOf": [
+      "computed":{
+        "oneOf":[
           {
-            "$ref": "#/definitions/computed"
+            "$ref":"#/definitions/computed"
           },
           {
-            "$ref": "#/definitions/propertyList"
+            "$ref":"#/definitions/propertyList"
           }
         ]
       },
-      "order": {
-        "$ref": "#/definitions/order"
+      "order":{
+        "$ref":"#/definitions/order"
       },
-      "stacking": {
-        "type": "boolean"
+      "stacking":{
+        "type":"boolean"
       },
-      "status": {
-        "$ref": "#/definitions/status"
+      "status":{
+        "$ref":"#/definitions/status"
       },
-      "mdn_url": {
-        "$ref": "#/definitions/mdn_url"
+      "mdn_url":{
+        "$ref":"#/definitions/mdn_url"
       }
     }
   }
